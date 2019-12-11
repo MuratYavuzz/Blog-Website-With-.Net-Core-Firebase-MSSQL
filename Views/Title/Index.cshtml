@@ -1,0 +1,30 @@
+@model IEnumerable<YENISOZLUK.Models.Title>
+
+@{
+    ViewData["Title"] = "Index";
+}
+ @if(@ViewBag.UserState == "1"){
+    <a href="/Title/Create" style="margin-left:1000px;">
+    <input type="button" class="btn btn-outline-success" value="Başlık Ekle">
+    </a>
+ }
+  @if(@ViewBag.UserState != "1"){
+
+    <a href="https://localhost:5001/Users/Login" style="margin-left:997px;">
+    <input id="giris_kaydol" type="button" class="btn btn-outline-success" visible="<%# MyVisiblePropertyOnCodeBehind %>" value="Giriş/Kaydol">
+    </a>
+  }
+<ul class="list-group item" style="margin-top:10px;">
+
+    @if(ViewBag.List != null){
+    @foreach (var item in ViewBag.List)
+    {
+      <div class="alert alert-info">
+      <a href="/Entry/Index/@item.TitleID" style="font-size:22px;color:black;font-family:Bahnschrift SemiCondensed;text-decoration:none;">
+      @item.Title_Text
+     </a> 
+    <label style="font-size:13px;font-family:Bahnschrift SemiCondensed;margin-right:10px;" position:"absolute">(@item.Entry_Number) Entry</label>
+     </div>
+    }
+    }
+</ul>

@@ -1,0 +1,56 @@
+@model YENISOZLUK.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4">Hoşgeldin</h1> <br />
+    <form asp-action="Create" style=" width: 100%; max-width: 330px;padding: 15px; margin: auto;">
+        @*<h1 class="h3 mb-3 font-weight-normal">Giriş Yap</h1>*@
+        <label for="Email" class="sr-only">Kullanıcı Adı</label>
+        <input asp-for="Username" type="text" class="form-control" placeholder="Kullanıcı Adın" required autofocus>
+
+        <label asp-for="Password" class="sr-only">Şifre</label>
+        <input asp-for="Password" type="password" id="Password" style="margin-top:6.5px;" class="form-control" minlength="8" maxlength="14" placeholder="Şifren" required>
+
+        <label asp-for="Password2" class="sr-only">Şifrenizi Doğrulayınız</label>
+        <input asp-for="Password2" type="password" id="Password2" style="margin-top:6.5px;" class="form-control" minlength="8" maxlength="14" placeholder="Şifre Tekrar" required>
+        <script>
+        var password = document.getElementById("Password") , confirm_password = document.getElementById("Password2");
+        function validatePassword(){
+            if(Password.value != Password2.value) {
+             confirm_password.setCustomValidity("Şifreler Eşleşmiyor!");
+             } else {
+            Password2.setCustomValidity('');
+             }
+            }
+        Password.onchange = validatePassword;
+        Password2.onkeyup = validatePassword;
+        </script>
+        <label asp-for="Email" class="sr-only">E-Mail</label>
+        <input asp-for="Email" type="email" id="Email" style="margin-top:6.5px;" class="form-control" placeholder="E-Mailin" required>
+        <div>
+            <label>
+                <input style="margin-top:15px;" type="checkbox" value="remember-me"> Beni hatırla
+            </label>
+        </div>
+        <button class="btn btn-lg btn-outline-success btn-block" type="submit">Kaydol</button>
+        @if(@ViewBag.UserRegister == "true"){
+        <p style="margin-top:5px;">
+        <button class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Kaydınız başarıyla tamamlandı.
+        </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+        <div class="card card-body" >
+        <a href="/Users/Login">
+        Giriş Yap...
+        </a>
+        </div>
+        </div>
+        }
+        <p class="mt-5 mb-3 text-muted">&copy; 2019 - YENİ SÖZLÜK</p>
+    </form>
+</div>

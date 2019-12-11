@@ -1,0 +1,17 @@
+@model YENISOZLUK.Models.User
+
+@{
+    ViewData["Title"] = "Profile";
+}
+<h3 class="display-4 font-weight-normal"> Yazar: @ViewBag.Name <label style="font-size:10px;margin-left:-5px;" >@ViewBag.TitleDate</label> </h3>
+@for(int i=0 ; i < @Model.Title_Text.Count ;i++)
+{
+int href=i+1;
+<ul class="list-group item" style="margin-top:15px;">
+<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+<a class="display-4 font-weight-normal" style="text-decoration: none;color:grey; font-size:23px; display: inline-block;" href="/Entry/Index/@href" >@Model.Title_Text[i]
+</a>
+<p style="font-size:16px;"> ✎ @Model.Entry_Text[i] </p>
+<p style="font-size:12px;margin-top:-13px;">@ViewBag.DateTime[i]</p>
+</ul>
+}  

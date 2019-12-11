@@ -1,0 +1,32 @@
+@model YENISOZLUK.Models.Title
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>Başlık Eklemek İstersen</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <!-- <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title_Text" class="control-label"></label>
+                <input asp-for="Title_Text" class="form-control" />
+                <span asp-validation-for="Title_Text" class="text-danger"></span>
+            </div> -->
+            <!-- <div class="form-group">
+                <input type="submit" style="margin-left:271.5px;" value="Gönder" class="btn btn-primary" />
+            </div> -->
+            <label asp-for="Title_Text" class="control-label"></label>
+            <div class="input-group mb-3">
+            <input asp-for="Title_Text" class="form-control"style="width:265px;" placeholder="Başlık gir..." >
+            <span asp-validation-for="Title_Text" class="text-danger"></span>
+            <div class="input-group-append">
+            <input class="btn btn-outline-secondary" type="submit" style="width:100px;" value="Gönder">
+            </div>
+            </div>
+        </form>
+    <!-- </div> -->
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

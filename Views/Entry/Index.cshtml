@@ -1,0 +1,28 @@
+@model IEnumerable<YENISOZLUK.Models.Entry>
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+<h1 class="display-4 font-weight-normal">@ViewBag.TitleName <label style="font-size:10px;margin-left:-5px;" >@ViewBag.TitleDate</label> </h1>
+
+</div>
+@if(@ViewBag.UserState == "1")
+{
+<a href="/Entry/Create/@ViewBag.TitleID" style="margin-left:1000px;margin-top:-75px;" class="btn btn-secondary" role="button" >Bahset</a>
+}
+<ul class="list-group item" style="margin-top:15px;">
+    @if(ViewBag.EntryList != null)
+    {
+    @foreach (var item in ViewBag.EntryList)
+    {
+        @if(item.TitleID ==ViewBag.TitleID)
+        {
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark"> @item.UserName</strong>
+         @item.Text
+         <p style="font-size:10px;"> @item.DateTime</p>
+        </p>
+        }
+    }
+    }
+</ul>

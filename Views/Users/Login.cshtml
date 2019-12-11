@@ -1,0 +1,31 @@
+@model YENISOZLUK.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4">Hoşgeldin</h1> <br />
+    <form asp-action="Login" class="for-label-group" style=" width: 100%; max-width: 330px;padding: 15px; margin: auto;">
+        @*<h1 class="h3 mb-3 font-weight-normal">Giriş Yap</h1>*@
+        <label for="inputEmail" class="sr-only">Kullanıcı Adı</label>
+        <input asp-for="Username" type="text" id="inputEmail" class="form-control" placeholder="Kullanıcı Adın" required autofocus>
+        <label asfor="inputPassword" class="sr-only">Şifre</label>
+        <input asp-for="Password" style="margin-top:9px;" type="password" id="inputPassword" class="form-control" placeholder="Şifren"  required>
+        <div>
+            <label>
+                <input style="margin-top:15px;" type="checkbox" value="remember-me"> Beni hatırla
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
+        <a href="/Users/Create" style="text-decoration:none;">
+        <button style="margin-top:5px;" class="btn btn-lg btn-outline-success btn-block" type="button">Kaydol</button>
+        </a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019 - YENİ SÖZLÜK</p>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
